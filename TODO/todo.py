@@ -16,21 +16,25 @@ def view(names, star):
         count = count + 1
 
 
+
 def add(names, star):
     print("Add task")
     names.append( input("Task data: "))
-    valid = False
-    while not valid:
-        shouldstar = (input("Star: Y/N"))
-        if shouldstar == 'y' or shouldstar == 'Y':
-            star.append("*")
-            valid = True
-        elif shouldstar == 'n' or shouldstar == 'N':
-            star.append("-")
-            valid = True
-        else:
-            print("Invalid Selection: ")
-        save(names, star)
+    print("S = star, D = dash, X = x, Z = custom")
+    mark = input("Enter the task status: ")
+    if mark == 'S' or mark == 's':
+        star.append('*')
+    elif mark == 'D' or mark == 'd':
+        star.append('-')
+    elif mark == 'X' or mark == 'x':
+        star.append('X')
+    elif mark == 'Z' or mark == 'z':
+        custom = input("Enter custom task status: ")
+        star.append(custom)
+    else:
+        print("invalid input: ")
+    save(names, star)
+
 
 def remove(names, star):
     view(names, star)
@@ -42,12 +46,22 @@ def remove(names, star):
 
 def startask(names, star):
     view(names, star)
-    starID = input("Enter the task number to change star status: ")
-    if star[starID] == '-':
-        star[starID] = '*'
-    else:
+    starID = int(input("Enter the task number to change star status: "))
+    print("S = star, D = dash, X = x, Z = custom")
+    mark = input("Enter the task status: ")
+    if mark == 'S' or mark == 's':
+        star[starID]= '*'
+    elif mark == 'D' or mark == 'd':
         star[starID] = '-'
+    elif mark == 'X' or mark == 'x':
+        star[starID] = 'X'
+    elif mark == 'Z' or mark == 'z':
+        custom = input("Enter custom task status: ")
+        star[starID] = custom
+    else:
+        print("invalid input: ")
     save(names, star)
+
 
 def getdata(names, star):
     p = open('tasks.txt')
@@ -83,6 +97,8 @@ while choice != 'E' and choice != 'e':
     elif choice == '3':
         remove(names, star)
     elif choice == '4':
+        startask(names, star)
+    elif choice == '5':
         startask(names, star)
     else:
         print("Invalid Selection")

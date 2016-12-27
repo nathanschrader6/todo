@@ -1,6 +1,6 @@
 *
-Fix crash if no tasks.txt
+Add #HASHTAGS!!!
 -
-add more configuration options
-*
-make work on *nix
+Make work with *nix
+-
+Make a plugin system (Low priority)
