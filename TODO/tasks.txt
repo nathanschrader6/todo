@@ -1,0 +1,6 @@
+*
+Fix crash if no tasks.txt
+-
+add more configuration options
+*
+make work on *nix
